@@ -43,7 +43,8 @@ spec:
           httpGet:
             path: /health
             port: 3000
-          initialDelaySeconds: 5
+          initialDelaySeconds: 15
+          failureThreshold: 5
           periodSeconds: 5
       initContainers:
       - name: wait-for-rabbitmq
