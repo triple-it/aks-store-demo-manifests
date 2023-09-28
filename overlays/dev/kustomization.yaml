@@ -11,7 +11,10 @@ namespace: dev
 images:
 - name: ghcr.io/pauldotyu/aks-store-demo/store-front
   newName: ghcr.io/pauldotyu/aks-store-demo/store-front # {"$imagepolicy": "flux-system:store-front:name"}
-  newTag: latest # {"$imagepolicy": "flux-system:store-front:tag"}
+  newTag: 1.0.0 # {"$imagepolicy": "flux-system:store-front:tag"}
+- name: ghcr.io/pauldotyu/aks-store-demo/store-admin
+  newName: ghcr.io/pauldotyu/aks-store-demo/store-admin # {"$imagepolicy": "flux-system:store-admin:name"}
+  newTag: 1.0.0 # {"$imagepolicy": "flux-system:store-admin:tag"}
 
 patches:
 - patch: |-
@@ -19,4 +22,10 @@ patches:
     kind: Service
     metadata:
       name: store-front
+    $patch: delete
+- patch: |-
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: store-admin
     $patch: delete
